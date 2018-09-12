@@ -13,6 +13,7 @@ import java.util.UUID;
 @AllArgsConstructor(access = AccessLevel.PRIVATE, onConstructor = @__(@PersistenceConstructor))
 @NoArgsConstructor
 @Builder
+@ToString
 public class Order {
 
     @Id
