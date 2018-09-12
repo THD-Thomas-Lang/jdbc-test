@@ -46,6 +46,7 @@ public class TestCases {
         Order newOrder = Order.builder().orderDate(LocalDate.now()).orderRecipient("Thomas Lang").orderSender("Technische Hochschule Deggendorf").orderState(OrderState.OPEN).build();
         assertThat(newOrder).isNotNull();
         log.error(newOrder.toString());
+        assertThat(orderService.newOrder(newOrder)).isTrue();
 
     }
 }
