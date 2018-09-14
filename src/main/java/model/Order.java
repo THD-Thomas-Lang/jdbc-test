@@ -17,7 +17,7 @@ import java.util.UUID;
 public class Order {
 
     @Id
-    private final UUID orderId = UUID.randomUUID();
+    private final UUID orderId = null;
 
     private String orderRecipient;
 
