@@ -1,5 +1,14 @@
 # Spring Data JDBC use case tests
 
+## prerequisites
+* installed and running docker (get the latest from https://www.docker.com/get-started)
+* use of testcontainers (https://www.testcontainers.org/usage.html)
+* temporary database containers (https://www.testcontainers.org/usage/database_containers.html)
+
+## important notes
+* docker: settings - general: activate "Expose daemon on ... "
+* docker: settings - shared drives:  c drive
+
 ## taken from
 https://github.com/spring-projects/spring-data-examples/tree/master/jdbc/basics
 
