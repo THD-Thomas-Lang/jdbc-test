@@ -28,33 +28,23 @@
 
     <properties>
         <assertj-core.version>3.6.2</assertj-core.version>
+        <spring-data-releasetrain.version>Lovelace-BUILD-SNAPSHOT</spring-data-releasetrain.version>
     </properties>
+
+    <profiles>
+        <!-- Override property as the module always needs Lovelace -->
+        <profile>
+            <id>spring-data-next</id>
+            <properties>
+                <spring-data-releasetrain.version>Lovelace-BUILD-SNAPSHOT</spring-data-releasetrain.version>
+            </properties>
+        </profile>
+    </profiles>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-tx</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jdbc</artifactId>
-            <version>1.0.0.RC2</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>

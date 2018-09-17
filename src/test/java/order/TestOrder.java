@@ -1,15 +1,12 @@
-package infrastucture;
+package order;
 
 import infrastructure.DataSourceConfiguration;
 import lombok.extern.slf4j.Slf4j;
-import order.IOrderService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import javax.sql.DataSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -21,30 +18,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = DataSourceConfiguration.class)
 @Slf4j
-public class TestInfrastructure {
+public class TestOrder {
 
     @Autowired
     private IOrderService orderService;
 
-    @Autowired
-    private DataSource dataSource;
-
-    /**
-     * Test if the service is ready.
-     */
     @Test
-    public void testIfServiceIsReady() {
-        assertThat(orderService).isNotNull();
-
+    public void createNewOrder() {
+        Order newOrder = new Order("Thomas Lang", "Technische Hochschule Deggendorf");
+        assertThat(newOrder).isNotNull();
+        log.error(newOrder.toString());
+        boolean b = orderService.newOrder(newOrder);
+        assertThat(b).isTrue();
     }
-
-    /**
-     * Test if the service is ready.
-     */
-    @Test
-    public void testIfDataSourceIsReady() {
-        assertThat(dataSource).isNotNull();
-
-    }
-
 }
