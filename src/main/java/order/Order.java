@@ -14,15 +14,15 @@ import java.time.LocalDate;
 public class Order {
 
     @Id
-    private final long orderId = 0;
+    private final long order_id = 0;
 
-    private String orderRecipient;
+    private String order_recipient;
 
-    private String orderSender;
+    private String order_sender;
 
-    private LocalDate orderDate = LocalDate.now();
+    private LocalDate order_date = LocalDate.now();
 
-    private OrderState orderState = OrderState.OPEN;
+    private OrderState order_state = OrderState.OPEN;
 
     /**
      * Overloaded constructor.
@@ -33,7 +33,7 @@ public class Order {
      */
     public Order(String orderRecipient, String orderSender) {
         this();
-        this.orderRecipient = orderRecipient;
-        this.orderSender = orderSender;
+        this.order_recipient = orderRecipient;
+        this.order_sender = orderSender;
     }
 }
