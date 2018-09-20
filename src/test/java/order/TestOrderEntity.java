@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -18,17 +19,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = DataSourceConfiguration.class)
 @Slf4j
-public class TestOrder {
+@Sql(scripts = "classpath:schema.sql")
+public class TestOrderEntity {
 
     @Autowired
     private IOrderService orderService;
 
     @Test
     public void createNewOrder() {
-        Order newOrder = new Order("Thomas Lang", "Technische Hochschule Deggendorf");
-        assertThat(newOrder).isNotNull();
-        log.error(newOrder.toString());
-        boolean b = orderService.newOrder(newOrder);
+        OrderEntity newOrderEntity = new OrderEntity("Thomas Lang", "Technische Hochschule Deggendorf");
+        assertThat(newOrderEntity).isNotNull();
+        log.error(newOrderEntity.toString());
+        boolean b = orderService.newOrder(newOrderEntity);
         assertThat(b).isTrue();
     }
 }

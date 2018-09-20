@@ -5,16 +5,17 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Getter
 @Setter
 @AllArgsConstructor(access = AccessLevel.PRIVATE, onConstructor = @__(@PersistenceConstructor))
 @NoArgsConstructor
 @ToString
-public class Order {
+public class OrderEntity {
 
     @Id
-    private final long order_id = 0;
+    private final UUID order_id = null;
 
     private String order_recipient;
 
@@ -31,7 +32,7 @@ public class Order {
      * @param orderRecipient a given recipient
      * @param orderSender    a given sender
      */
-    public Order(String orderRecipient, String orderSender) {
+    OrderEntity(String orderRecipient, String orderSender) {
         this();
         this.order_recipient = orderRecipient;
         this.order_sender = orderSender;

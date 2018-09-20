@@ -24,13 +24,13 @@ public class OrderService implements IOrderService {
     /**
      * Adds a new infrastucture.
      *
-     * @param order the given infrastucture
+     * @param orderEntity the given infrastucture
      * @return boolean
      */
     @Override
-    public boolean newOrder(Order order) {
+    public boolean newOrder(OrderEntity orderEntity) {
         try {
-            orderRepository.save(order);
+            orderRepository.save(orderEntity);
             return true;
         } catch (Exception exception) {
             log.error(exception.getMessage());

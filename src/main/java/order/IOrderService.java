@@ -6,8 +6,8 @@ public interface IOrderService {
     /**
      * Adds a new infrastucture.
      *
-     * @param order the given infrastucture
+     * @param orderEntity the given infrastucture
      * @return boolean
      */
-    boolean newOrder(Order order);
+    boolean newOrder(OrderEntity orderEntity);
 }

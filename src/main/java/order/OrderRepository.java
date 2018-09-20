@@ -10,5 +10,5 @@ import java.util.UUID;
  *
  * @author tlang
  */
-interface OrderRepository extends CrudRepository<Order, UUID> {
+interface OrderRepository extends CrudRepository<OrderEntity, UUID> {
 }
