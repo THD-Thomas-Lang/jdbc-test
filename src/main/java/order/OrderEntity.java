@@ -1,21 +1,23 @@
 package order;
 
 import lombok.*;
+import lombok.experimental.Wither;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
+import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 @Getter
 @Setter
 @AllArgsConstructor(access = AccessLevel.PRIVATE, onConstructor = @__(@PersistenceConstructor))
-@NoArgsConstructor
 @ToString
+@Table("order_entity")
 public class OrderEntity {
 
-    @Id
-    private final UUID order_id = null;
+    private final @Id
+    @Wither
+    long order_id;
 
     private String order_recipient;
 
@@ -33,7 +35,7 @@ public class OrderEntity {
      * @param orderSender    a given sender
      */
     OrderEntity(String orderRecipient, String orderSender) {
-        this();
+        this.order_id = 0;
         this.order_recipient = orderRecipient;
         this.order_sender = orderSender;
     }

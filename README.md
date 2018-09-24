@@ -8,6 +8,9 @@
 ## important notes
 * docker: settings - general: activate "Expose daemon on ... "
 * docker: settings - shared drives:  c drive
+* init script testcontainers: there is a need of annotating one´s tests with `@Sql(scripts = "classpath:schema.sql")`
+otherwise init sql commands will not be executed for some reason
+* init script for postgres: `CREATE TABLE IF NOT EXISTS public.order_entity (order_id SERIAL PRIMARY KEY, order_recipient character varying NOT NULL, order_sender character varying NOT NULL,order_date date NOT NULL DEFAULT ('now'::text)::date, order_state character varying);`
 
 ## taken from
 https://github.com/spring-projects/spring-data-examples/tree/master/jdbc/basics
@@ -28,5 +31,10 @@ What do i do if i want to specify a column as obligatory like `@Column(nullable 
   Variante a) anlegen von Tabellen und dergleichen: Werden wir sicherlich irgendwann mal machen, hat aber keine so hohe Priorität
   b) Konfiguration der Datasource(URL, user, passwort): Spring Data JDBC benötigt die einfach (bzw. genau genommen eine NamedParameterJdbcOperation); Es gibt noch keinen Spring Boot Support ich weiß aber nicht, was Spring Boot alleine dadurch tut, dass ein JDBC Treiber auf dem Klassenpfad ist.
 
-* Schema changes? How are schema changes to the model handled by Spring Data JDBC? Do i have to miror the changes on to the database?
-* How and when does the schema.sql kick in? Especially in testcontainers.org environment?
+* an enum gets not auto-converted when being inserted. see test case `TestOrderEntity`
+
+## possible improvements
+* enum mapping to int
+> Enums get mapped to their name.
+
+see: https://docs.spring.io/spring-data/jdbc/docs/1.0.0.RC2/reference/html/#jdbc.entity-persistence.types

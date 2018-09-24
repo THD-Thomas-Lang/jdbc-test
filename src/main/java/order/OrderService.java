@@ -30,7 +30,8 @@ public class OrderService implements IOrderService {
     @Override
     public boolean newOrder(OrderEntity orderEntity) {
         try {
-            orderRepository.save(orderEntity);
+            OrderEntity savedEntity = orderRepository.save(orderEntity);
+            log.error(String.format("Saved entity: %s", savedEntity.toString()));
             return true;
         } catch (Exception exception) {
             log.error(exception.getMessage());
